@@ -1,0 +1,16 @@
+services:
+  n-plus-1-mysql:
+    image: mysql:8.0.38
+    container_name: n-plus-1-mysql
+    restart: always
+    ports:
+      - "3316:3306"
+    command: "--max_allowed_packet=128M --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+    volumes:
+      - ./mysql-database:/docker-entrypoint-initdb.d/
+      - n-plus-one-mysql:/var/lib/mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+volumes:
+  n-plus-one-mysql:
+    driver: local
