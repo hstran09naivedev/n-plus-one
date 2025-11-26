@@ -17,7 +17,7 @@ public class Employee {
     private String position;
     private BigDecimal salary;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
 
